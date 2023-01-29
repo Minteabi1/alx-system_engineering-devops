@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Gather Data From Api """
+
 import requests
-import urllib
 import sys
 
 
