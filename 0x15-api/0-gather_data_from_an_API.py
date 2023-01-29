@@ -12,16 +12,18 @@ if __name__ == "__main__":
     id = sys.argv[1]
     def get_user_info(id):
         """ Get User Info """
-        url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
-        r = requests.get(url)
-        return r.json()
+        api_url = 'https://jsonplaceholder.typicode.com'
+        user_uri = '{api}/users/{id}'.format(api=api_url, id=id)
+        ruser_uri = requests.get(user_uri)
+        return ruser_uri.json()
 
     def get_user_tasks(id):
         """ Get User Tasks """
-        url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(id)
-        r = requests.get(url)
-        return r.json()
-    
+        api_url = 'https://jsonplaceholder.typicode.com'
+        user_uri = '{api}/users/{id}'.format(api=api_url, id=id)
+        todo_uri = '{user_uri}/todos'.format(user_uri=user_uri)
+        todo_url = requests.get(todo_uri)
+        return todo_url.json() 
     user = get_user_info(id)
     tasks = get_user_tasks(id)
     completed_tasks = []
